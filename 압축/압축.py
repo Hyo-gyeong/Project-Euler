@@ -1,25 +1,26 @@
-rf = open('data.txt', 'r')
-wf = open('bye.txt','w')
+read_file = open('data.txt', 'r')
+write_file = open('bye.txt', 'w')
 word = ""
-count = 0;
+count = 1
 
 while (True):
-    line = rf.readline()
+    line = read_file.readline()
     if not line:
         break
-    join_line = "".join(line.split())
+    joined_line = "".join(line.split())
     print(line)
-    print(join_line)
+    print(joined_line)
 
-for i in range(1,len(join_line)):
-    if (join_line[i] == join_line[i-1]):
+for i in range(1,len(joined_line)):
+    if (joined_line[i] == joined_line[i-1]):
         count += 1
     else:
-        word = join_line[i-1] + str(count)
-        wf.write(word)
-word = join_line[i-1] + str(count)
-wf.write(word)
+        word = joined_line[i-1] + str(count)
+        write_file.write(word)
+        count = 1
+        
+word = joined_line[i-1] + str(count)
+write_file.write(word)
 
-rf.close()
-wf.close()
-
+read_file.close()
+write_file.close()
